@@ -1,0 +1,1 @@
+{"name":"Local: taxi","url":"c:\\Users\\91700\\Desktop\\cp\\sheet\\taxi.cpp","tests":[{"id":1707980802056,"input":"150 50 1000 100","output":"450"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\sheet\\taxi.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: Longest_repeating_seqeunce","url":"c:\\Users\\91700\\Desktop\\cp\\Longest_repeating_seqeunce.cpp","tests":[{"id":1695023639085,"input":"2\n5\n1 0 0 1 0\n7\n1 0 0 0 1 1 1\n\n","output":"2 1\n3\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\Longest_repeating_seqeunce.cpp","group":"local","local":true}

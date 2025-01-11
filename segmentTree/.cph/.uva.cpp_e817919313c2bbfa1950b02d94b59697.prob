@@ -1,0 +1,1 @@
+{"name":"Local: uva","url":"c:\\Users\\91700\\Desktop\\cp\\uva.cpp","tests":[{"id":1707980128233,"input":"3\n24 1\n4358 754\n305 794","output":"34\n1998\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\uva.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: drunkard_jailer","url":"c:\\Users\\91700\\Desktop\\cp\\sheet\\drunkard_jailer.cpp","tests":[{"id":1707984525587,"input":"2\n5\n100","output":"2\n10"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\sheet\\drunkard_jailer.cpp","group":"local","local":true}

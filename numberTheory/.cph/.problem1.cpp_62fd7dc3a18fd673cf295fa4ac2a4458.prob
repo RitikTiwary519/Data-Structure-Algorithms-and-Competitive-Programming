@@ -1,0 +1,1 @@
+{"name":"Local: problem1","url":"c:\\Users\\91700\\Desktop\\cp\\numberTheroy\\problem1.cpp","tests":[{"id":1722427430244,"input":"4\n1\n2\n10\n9999999","output":"0\n1\n2\n13175"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\numberTheroy\\problem1.cpp","group":"local","local":true}

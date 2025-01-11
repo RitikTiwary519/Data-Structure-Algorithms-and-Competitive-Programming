@@ -1,0 +1,1 @@
+{"name":"Local: ppt","url":"c:\\Users\\91700\\Desktop\\cp\\ppt.cpp","tests":[{"id":1719745170602,"input":"1\n5\n4 2 4 5 6","output":"17\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\ppt.cpp","group":"local","local":true}

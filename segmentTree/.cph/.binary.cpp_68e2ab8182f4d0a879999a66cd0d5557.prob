@@ -1,0 +1,1 @@
+{"name":"Local: binary","url":"c:\\Users\\91700\\Desktop\\cp\\binary.cpp","tests":[{"id":1709391891170,"input":"8 7\n4 5 7 9 10 1 2 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\91700\\Desktop\\cp\\binary.cpp","group":"local","local":true}
