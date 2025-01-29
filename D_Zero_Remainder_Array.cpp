@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define int ll
 #define rsrt sort(v.rbegin(), v.rend());
 #define input                  \
     for (ll i = 0; i < n; i++) \
@@ -27,43 +28,54 @@ using namespace std;
 #define forn(a, b, c) for (int(a) = (b); (a) < (c); (a)++)
 #define ford(a, b, c) for (int(a) = (b); (a) > (c); (a)--)
 
-ll dp[1000+3][1000+3];
+
 void solve()
 {
-
-    memset(dp,0,sizeof(dp));
-    ll n,m;
-    cin>>n>>m;
-    vector<int> v(n,0);
+    int n,k;
+    cin>>n>>k;
+    vector<int> v(n);
     forn(i,0,n) cin>>v[i];
-
-    for (int i = 1; i <= n; i++)
+    unordered_map<int,int> mp;
+    forn(i,0,n)
     {
-        for(int j=1;j<=m;j++)
+        if(v[i]%k!=0) mp[k-v[i]%k]++;
+    }
+
+    int ans=0;
+    int maxi=0;
+    int val = 0;
+    for(auto it: mp)
+    {
+        if((it.second)>=maxi)
         {
-            if(i==1)
-            {
-                if(v[i-1]==0 || v[i-1]==j)
-                {
-                    dp[i][j]=1;
-                }
-            }
-            else if(v[i-1]==0 || v[i-1]==j)
-            {
-                dp[i][j]=dp[i-1][j-1]+dp[i-1][j]+dp[i-1][j+1];
-            }
+            maxi=it.second;
+            val=max(it.first,val);
         }
     }
-    int sum=0;
-    forn(i,0,m)
+    if(maxi==0)
     {
-        sum+=dp[n][i];
+        cout<<maxi<<endl;
+        return;
     }
-    cout<<sum<<endl;
-    
+    int maxii=0;
+    for(auto it: mp)
+    {
+        if(it.second==maxi)
+        {
+            maxii=max(maxii, k*1ll*(it.second-1)+it.first+1);
+        }
+    }
+    cout<<maxii<<endl;
+
 }
 
-int main()
+signed main()
 {
-    solve();
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        solve();
+    }
+    
 }

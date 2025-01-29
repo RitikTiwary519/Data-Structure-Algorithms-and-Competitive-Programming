@@ -27,43 +27,24 @@ using namespace std;
 #define forn(a, b, c) for (int(a) = (b); (a) < (c); (a)++)
 #define ford(a, b, c) for (int(a) = (b); (a) > (c); (a)--)
 
-ll dp[1000+3][1000+3];
-void solve()
-{
-
-    memset(dp,0,sizeof(dp));
-    ll n,m;
-    cin>>n>>m;
-    vector<int> v(n,0);
-    forn(i,0,n) cin>>v[i];
-
-    for (int i = 1; i <= n; i++)
-    {
-        for(int j=1;j<=m;j++)
-        {
-            if(i==1)
-            {
-                if(v[i-1]==0 || v[i-1]==j)
-                {
-                    dp[i][j]=1;
-                }
-            }
-            else if(v[i-1]==0 || v[i-1]==j)
-            {
-                dp[i][j]=dp[i-1][j-1]+dp[i-1][j]+dp[i-1][j+1];
-            }
-        }
-    }
-    int sum=0;
-    forn(i,0,m)
-    {
-        sum+=dp[n][i];
-    }
-    cout<<sum<<endl;
-    
-}
-
 int main()
 {
-    solve();
+    string str;
+    cin>>str;
+    int maxi=1;
+    int cnt=1;
+    for (int i = 1; i < str.size(); i++)
+    {
+        if(str[i]==str[i-1])
+        {
+            cnt++;
+            maxi=max(maxi,cnt);
+        }
+        else
+        {
+            cnt=1;
+        }
+    }
+    cout<<maxi<<endl;
+    
 }

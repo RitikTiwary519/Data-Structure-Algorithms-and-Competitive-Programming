@@ -27,39 +27,36 @@ using namespace std;
 #define forn(a, b, c) for (int(a) = (b); (a) < (c); (a)++)
 #define ford(a, b, c) for (int(a) = (b); (a) > (c); (a)--)
 
-ll dp[1000+3][1000+3];
 void solve()
 {
-
-    memset(dp,0,sizeof(dp));
-    ll n,m;
-    cin>>n>>m;
-    vector<int> v(n,0);
-    forn(i,0,n) cin>>v[i];
-
-    for (int i = 1; i <= n; i++)
+    int n;
+    cin>>n;
+    vector<int> a(n,0),b(n,0);
+    for (int i = 0; i < n; i++)
     {
-        for(int j=1;j<=m;j++)
-        {
-            if(i==1)
-            {
-                if(v[i-1]==0 || v[i-1]==j)
-                {
-                    dp[i][j]=1;
-                }
-            }
-            else if(v[i-1]==0 || v[i-1]==j)
-            {
-                dp[i][j]=dp[i-1][j-1]+dp[i-1][j]+dp[i-1][j+1];
-            }
-        }
+        cin>>a[i];
     }
-    int sum=0;
-    forn(i,0,m)
+    for (int i = 0; i < n; i++)
     {
-        sum+=dp[n][i];
+        cin>>b[i];
     }
-    cout<<sum<<endl;
+    vector<vector<int>> dp(n+1,vector<int>(3,0));
+   // there are three posibilities
+   // 1) take the present player: from a or b ,  
+   //2 ) don't take the present player,
+   dp[0][0]=a[0];
+   dp[0][1]=b[0];
+   dp[0][2]=0;
+
+   for(int i=0;i<n;i++)
+   {
+    for(int j=0;j<3;j++)
+    {
+        
+    }
+   }
+
+    
     
 }
 

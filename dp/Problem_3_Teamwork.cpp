@@ -27,43 +27,34 @@ using namespace std;
 #define forn(a, b, c) for (int(a) = (b); (a) < (c); (a)++)
 #define ford(a, b, c) for (int(a) = (b); (a) > (c); (a)--)
 
-ll dp[1000+3][1000+3];
+
 void solve()
 {
-
-    memset(dp,0,sizeof(dp));
-    ll n,m;
-    cin>>n>>m;
-    vector<int> v(n,0);
+    int n,k;
+    cin>>n>>k;
+    vector<int> v(n);
     forn(i,0,n) cin>>v[i];
-
-    for (int i = 1; i <= n; i++)
+    vector<int> dp(n+1,0);
+    dp[0]=v[0];
+    for(int i=1;i<n;i++)
     {
-        for(int j=1;j<=m;j++)
+        int temp = v[i];
+        for (int j = i; j >=  max(0, i - k + 1); j--)
         {
-            if(i==1)
+            if(j<0)
             {
-                if(v[i-1]==0 || v[i-1]==j)
-                {
-                    dp[i][j]=1;
-                }
+                continue;
             }
-            else if(v[i-1]==0 || v[i-1]==j)
-            {
-                dp[i][j]=dp[i-1][j-1]+dp[i-1][j]+dp[i-1][j+1];
-            }
+            temp = max(temp,v[j]);
+            dp[i]=max(dp[i],temp*(i-j+1)+(j==0 ? 0 : dp[j-1]));
         }
     }
-    int sum=0;
-    forn(i,0,m)
-    {
-        sum+=dp[n][i];
-    }
-    cout<<sum<<endl;
-    
+    cout<<dp[n-1]<<endl;
 }
 
 int main()
 {
+    freopen("teamwork.in", "r", stdin);
+	freopen("teamwork.out", "w", stdout);
     solve();
 }
