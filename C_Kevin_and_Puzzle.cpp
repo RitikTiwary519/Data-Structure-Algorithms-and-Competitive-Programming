@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #define ll long long
-#define int ll
 #define rsrt sort(v.rbegin(), v.rend());
 #define input                  \
     for (ll i = 0; i < n; i++) \
@@ -32,30 +31,54 @@ void solve()
 {
     int n;
     cin>>n;
-    vector<int> a(n),b(n);
-    for(int i=0;i<n;i++)
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
     {
-        cin>>a[i];
+        cin>>v[i];
     }
-    for(int i=0;i<n;i++)
-    {
-        cin>>b[i];
-    }
-    vector<vector<int>> dp(n+1,vector<int>(3,0)); 
-    dp[0][0]=a[0];
-    dp[0][1]=b[0];
+
+    vector<vector<int>> dp(n+1,vector<int>(n+1,0)); //i is index and j is the number of false people
+    dp[0][0]=1;
+    dp[0][1]=1;
 
     for (int i = 1; i < n; i++)
+        for(int j=1;j<n;j++)
     {
-        dp[i][0]=max(dp[i-1][0],a[i]+dp[i-1][1]);
-        dp[i][1]=max(dp[i-1][1],b[i]+dp[i-1][0]);
+        {
+            if(j>=v[i])
+            {
+                dp[i][j]+=dp[i-1][j-v[i]];
+            }
+            dp[i][j]+=dp[i-1][j-1];
+        }
     }
-    cout<<max(dp[n-1][0],dp[n-1][1])<<endl;
-    
+    int sum=0;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     sum+=dp[n-1][i];
+    // }
+    // cout<<sum<<endl;
 
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout<<dp[i][j]<<" ";
+        }
+        cout<<endl;
+        
+    }
+    cout<<"------"<<endl;
+    
 }
 
-signed main()
+int main()
 {
-    solve();
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        solve();
+    }
+    
 }

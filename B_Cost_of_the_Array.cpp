@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #define ll long long
-#define int ll
 #define rsrt sort(v.rbegin(), v.rend());
 #define input                  \
     for (ll i = 0; i < n; i++) \
@@ -30,32 +29,50 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin>>n;
-    vector<int> a(n),b(n);
-    for(int i=0;i<n;i++)
+    int n,k;
+    cin>>n>>k;
+    vector<int> v;
+    input
+    int counter=1;
+    int odd=0,even=1;
+    int i=1;
+    int temp = k/2;
+    k--;
+    while(i<n && k>=temp)
     {
-        cin>>a[i];
+        if(odd==1)
+        {
+            odd=0,even=1;
+            i++;
+            k--;
+        }
+        else
+        {
+            while(counter!=v[i] && n-i>=k)
+            {
+                i++;
+            }
+            if(counter!=v[i])
+            {
+                cout<<counter<<endl;
+                return;
+            }
+            i++;
+            counter++;
+            k--;
+            odd=1,even=0;
+        }
     }
-    for(int i=0;i<n;i++)
-    {
-        cin>>b[i];
-    }
-    vector<vector<int>> dp(n+1,vector<int>(3,0)); 
-    dp[0][0]=a[0];
-    dp[0][1]=b[0];
-
-    for (int i = 1; i < n; i++)
-    {
-        dp[i][0]=max(dp[i-1][0],a[i]+dp[i-1][1]);
-        dp[i][1]=max(dp[i-1][1],b[i]+dp[i-1][0]);
-    }
-    cout<<max(dp[n-1][0],dp[n-1][1])<<endl;
-    
-
+    cout<<counter<<endl;
+    return ;
 }
 
-signed main()
+int main()
 {
-    solve();
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        solve();
+    }
 }

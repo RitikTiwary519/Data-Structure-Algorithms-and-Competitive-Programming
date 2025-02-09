@@ -32,27 +32,22 @@ void solve()
 {
     int n;
     cin>>n;
-    vector<int> a(n),b(n);
-    for(int i=0;i<n;i++)
-    {
-        cin>>a[i];
-    }
-    for(int i=0;i<n;i++)
-    {
-        cin>>b[i];
-    }
-    vector<vector<int>> dp(n+1,vector<int>(3,0)); 
-    dp[0][0]=a[0];
-    dp[0][1]=b[0];
-
-    for (int i = 1; i < n; i++)
-    {
-        dp[i][0]=max(dp[i-1][0],a[i]+dp[i-1][1]);
-        dp[i][1]=max(dp[i-1][1],b[i]+dp[i-1][0]);
-    }
-    cout<<max(dp[n-1][0],dp[n-1][1])<<endl;
     
+    ll dp[n+1][n*n];
+    memset(dp,0,sizeof(dp));
+    dp[0][0]=1;
 
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n*(n+1)/4; j++)
+        {
+
+            dp[i][j] += ((j>=i ? dp[i-1][j-i] : 0) + dp[i-1][j]);
+
+        }
+    }
+    cout<<dp[n][n*(n+1)/4]<<endl;
+    
 }
 
 signed main()
