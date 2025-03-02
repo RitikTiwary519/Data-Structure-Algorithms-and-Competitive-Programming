@@ -33,5 +33,18 @@ for n in arr:
 print()
 
 
+# join and zip exists
+nums = [1, 2, 3, 4]
+print(" ".join(map(str, nums)))
+
+
+nums1 = [1, 2, 3]
+nums2 = [4, 5, 6]
+
+for a, b in zip(nums1, nums2):
+    print(a, b)
+
+
+
 for i, n in enumerate(nums):
         print(f"Value: {n}")

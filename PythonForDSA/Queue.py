@@ -7,5 +7,4 @@ queue.appendleft(3)
 print(queue)
 queue.append(3)
 print(queue)
-
 # same is for pop
