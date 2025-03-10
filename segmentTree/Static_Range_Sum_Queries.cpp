@@ -384,7 +384,6 @@ public:
         seg[ind] = (seg[2 * ind + 1] + seg[2 * ind + 2]);
     }
 };
-
 int main() {
     ll n, m;
     cin >> n >> m;

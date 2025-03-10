@@ -12,8 +12,12 @@ nums.append(5)
 nums.pop()
 nums.insert(1,8)
 
+def function(x):
+     return x
+
 nums.sort()
 nums.sort(reverse=True)
+sorted(nums,key=function())
 
 # list declaration in python 
 arr = [i+1 for i in range(5)]
