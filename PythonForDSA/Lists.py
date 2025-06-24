@@ -51,4 +51,4 @@ for a, b in zip(nums1, nums2):
 
 
 for i, n in enumerate(nums):
-        print(f"Value: {n}")
+        print(f"Value: {n} && Index: {i}")
