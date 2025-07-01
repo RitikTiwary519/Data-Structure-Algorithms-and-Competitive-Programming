@@ -1,0 +1,40 @@
+Notes in stack and queue
+1) Next Greater element:
+    ds: queue q , vector nge, 
+    algorithm start from the rightest end and keep traversing to left, if it is greater than the top most we will keep pushing out other elements , unit the greater is encountered if stack becomes empty assign -1.
+
+    ALWAYS NOTE ,  that we have to removet that element even if it is equal to the current element , (stack top element)
+
+
+2) Nge in circular array
+  in this we will add the array at the end and keep, 
+  1)after making this array we will start from the end , and keep adding the elements in it. 
+  2) after traversing the last n elemnts now we will assign the elemnts
+
+3) Rainwater tapping problem:
+  A) space = 0(N)
+    time = 0(N)
+    using premax and sufmax to find the  answer , we will find the min of pre[i] and sufmax[i] and then keep adding their sum - hiegh[i]
+  
+  B) Two pointer:
+    Space= 0(1)
+    Time = O(N)
+    maintaining lmax from the last and rmax starting from the end and keep doing the same
+
+4) Sum of min sub array:
+  space = 0(2*n)
+  time = o(n)
+  here we will maintain the next smaller element and prev smaller eleemnt and then multiply it and then multiply the number and add it.
+
+  Similiar questions on the leetcode:
+  I) sum of min and max element in the subarray :
+    Just do same as the main question and then do same for greater element , subtract the smaller number and add the larger nuumber
+
+5) Asteriod collision:
+  just simple stack question , o(n),o(n)
+  Similiar questions : 
+  simple
+  2751. Robot Collisions
+
+6)Sliding Window Maximum
+  Use double ended queue , just a sliding window tough question

@@ -1,0 +1,118 @@
+
+important topics for graphs
+
+1) dfs
+2) bfs
+3) dfs and bfs for searching connected components
+4) bfs multisource
+6) dfs multisource
+7) thinking which to use when be sure , if which will yield better results
+by the way bfs always results better results
+8) Bipartite using dfs,
+9) topological Sort
+    a)kahns algorithm: using indegree to solve the problem  
+    b)normal attempt: pushing everything to stack and doing dfs traversal order wise
+        and then at the end take out the element from the stack , which will reverse the ordre.
+10) cycle detection 
+| #      | **Variant**                        | **Graph Type**        | **Key Idea**                                        |
+| ------ | ---------------------------------- | --------------------- | --------------------------------------------------- |
+| 1️⃣    | Detect cycle (undirected)          | Undirected            | If visited neighbor ≠ parent → cycle                |
+| 2️⃣    | Detect cycle (directed)            | Directed              | If node in recursion stack → cycle                  |
+| 3️⃣    | Print one cycle                    | Directed / Undirected | Store path, backtrack when cycle found              |
+| 4️⃣    | Detect all cycles                  | Any                   | DFS + backtracking + visited path storage           |
+| 5️⃣    | Handle self-loops / multiedges     | Both                  | Treat self-loop as cycle, skip parent in undirected |
+| 6️⃣    | Directed graph (Kahn's Algo - BFS) | Directed              | If topo sort < total nodes → cycle exists           |
+| 7️⃣    | Detect negative weight cycles      | Weighted              | Use Bellman-Ford (not DFS)                          |
+| 8️⃣    | Cycle in subgraph/component        | Any                   | DFS in each component separately                    |
+| 9️⃣    | Cycle of exact length `k`          | Any                   | DFS with depth limiting & visited tracking          |
+| 🔟    | Cycle from a specific node         | Any                   | DFS from `u`, revisit `u` via different path        |
+| 1️⃣1️⃣ | Cycle with constraints             | Any                   | Modify DFS to include custom conditions             |
+
+
+11) distance finder : //  I always gets confuse on this one
+    a) unit distance bfs , for minimum distance finder
+    b) shortest distance in directed acyclic graph using topo sort:
+        I) in this we first find the topo sort
+        II) take the distance of the source node as = 0
+        III) take element out of stack one by one and then reduce their neighbouring nodes 
+12) Dijkstra's algorithm 
+    time complexiy: Elog(V)
+    space complexity: E+V
+    there is no use of visited array so don't get confused with it
+    a) set: instead of using the queue we will use the set to push element and take the smallest element
+    out of it everytime we reduce the distance we will remove the current distance out of the set , traverse 
+    till the set becomes empty
+    this is better for the more denser 
+    b) priority queue: in this,
+    we will use minheap , this is better for the sparse graphs 
+    here will only be moving with the lowest distance 
+QUESTIONS IN DIJSKTRA'S ALGORITHM:
+A) most of the time we will be using a priority queue and in such cases we come 
+across situation or variants where we will be required to prioritize another things 
+as well such as stops and time etc , in such case form inserting element according to 
+your requirement and from my observation that order of different value in data type will not 
+matter
+    I) questions like flight with k stops
+    II)network delay time , here we don't even required anything new
+Note: alaways keep in mind the indexing whether it is one base - or 0 based
+      for declaring the adj list , initisalise it with the maximumj number of the
+      nodes.. that is 100 most of the time
+
+Problems with Dijkstra:
+    1) Fails when we encounter an edge with negative value
+    2) If there is a cycle then it will give tle become it keeps rotating in it.
+
+
+13) Bellman ford:
+    this works well with negative cycles and also helps in detection negative cycle
+    1)we don't requrie adjancy matrix , just the connections are need,
+    2)we don't maintain the vis , or queue , simply distance array is maintained
+    3)now in this we will keep moving through all the edges in order till n-1, times,
+    n-1 becuase the worst case is when the grpah is reversely connected.
+
+    time complexity: 0(E*E) 
+
+14) Floyd warshall algorithm:
+    it is a multisource algorithm because it gives the shortest path from one node to each node, like a table where we can find the length of the shortest path starting from each node to endind at each node.
+
+    intuition: it is a brute force algorithm, 
+        we memoised a table thinking it is a dp
+        we will first put mat[i][i]=0 and put all the edge weights 
+    pseudocode:
+        for i: 1-n:
+            for j: 1-n;
+                for k: 1-n:
+                    mat[i][j]=min(mat[i][j],mat[i][k]+mat[k][j]);
+    how to find the negative cycle :
+    we will check all the path mat[i][i], if anyone is less than 0, we will conclude that it includes a negatvie cycle;
+
+    15) Minimum spanning Tree:
+        Prims Algorithm: prims means pilgrimage and they are greedy so it is just like the dijkstra where we are being greedy and all way taking the shorter cost paths
+        priority_queue<wgt,node>
+        vis or not , 
+        So in priority_queue approach it is always the case the if a node has been visited already it must have taken the lowest time or cost to reach it 
+
+    16) Disjoint sets:
+        flow :
+        -DisjointSet()----class, it will have rank,size(depending),par
+        -DisjointSet(int n) constructor for initialising everything
+        -FindUParent(int u) if recursively using par array finds and return the ultimate parent , if no parent then it is his parent , because we initialise the par array in this sense
+        -UnionBySize(int u,int v)/UnionByRank(int u, int v): 
+        we find ultparu, ultparv || if equal return || -> do those three steps 
+        1) 1<2, THEN RANK OF ultparv=ultparu
+        2) VICE VERSA
+        3) update rank of anyone by 1 and make it parent
+
+        for size if equal return else do those 2 steps where we check the whose is smaller and then add up the size of smaller to larger
+        A) Rank: Ranks means the height of the tree.  
+        B) Size: it means the size of the component
+
+
+
+Hamiltonian path:
+    1)If were are travelling the path, and can move across through each edge exactly once without travelling the same edge twice. this is called hamiltonian path.
+Hamiltonian cycle:
+    If we can come back to a node again than it is called hamiltonian cycle.
+
+    
+     
