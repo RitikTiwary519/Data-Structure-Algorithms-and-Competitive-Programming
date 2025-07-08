@@ -1,0 +1,35 @@
+
+
+4) This helped me to understand the multiset,
+following thing about the mutlisets : 
+insertion: logn
+deletion: logn
+
+can hold multiple repeated sorted elements , 
+multiset<int> ms(a.begin(),a.end());
+auto it = ms.lower_bound(val)
+if(it==ms.begin()) no element
+
+Instead of it we can also use set<pair<int,int>> where each element is preseent
+with the index of it
+
+5) Resturant customer: 
+    In this we were asked to find the maximum overalapping region.
+    1) The first approach , I thought was using the counting tech
+    but this was difficult because this would counting all the numbers 
+    2) a little tweak so we added the sorting part of number with assignment
+    -1 and +1 and then sort it.
+6) I used the sorting and then checking the if they overlap , 
+please look into the algo and don't check the testcases to generate the algorithm
+
+
+7) SUM of two numbers:
+    nothing to learn
+
+8) maximum coin sum:
+1) dp approach waste: 
+    just like min coin sum, in same but remember that we need to traverse backward.
+2) greedy appraoch:
+    we will think of a bag of solution, where we will keep adding the new number on the 
+    basis of two cases , larger and smaller , smaller will increase the size of the 
+    bag and larger forces us to print the answer

@@ -1,0 +1,34 @@
+1) subordinate : 
+this problem used the dfs algorithm , where it basically measured the subordinate
+of each node and while moving up it kept adding it
+
+2) Tree matching :
+Very common question in codeforces too , and it uses dp on trees , here we take two
+cases dp[u][1] and dp[u][0] first mean considering the node u , considering it taken 
+and another assuming the node u not taken. answer will be the max of the two
+
+3) Tree diameter:
+
+    A) easy to write and hard to prove: 
+        in this using the bfs , we will find the farthest node from any point and then using
+        that point i will find the next farther point from it , that will be the diameter
+
+        u BFS V
+        v BFS z 
+        then v is z is the diamtere
+
+    B) dp:
+        There are two ways , here for each node there are two ways ,
+        dp[node][0] = means that the diameter not passing through it
+        dp[node][1] = means that the diameter passing through it 
+
+        dp[u][0]= for all i's max(dp[u_i][0],dp[u_i][1])
+        dp[u][1]= for all i's max(path_node of 2 max nodes)
+
+4) tree distances I: Here we are asked to find the furthest node for each node 
+from each node 
+    A)  bfs traversal : this will of V*(V+E), I had found it 
+
+    B) using partial answer : you guessed it but the optimiisation part of was if 
+    i am not including the particular sub node then maximum finding is using prefixmax and suffix 
+    max.

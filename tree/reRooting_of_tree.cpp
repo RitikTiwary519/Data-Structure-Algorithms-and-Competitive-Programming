@@ -1,6 +1,4 @@
-/*
-    author: kartik8800
-*/
+
  
 #include<bits/stdc++.h>
 #define ll long long
@@ -46,7 +44,8 @@ void solve(int src, int par, ll par_ans, int& totalNodes)
     for(int child : tree[src])
     {
         if(child != par)
-            solve(child, src, ans[src] - (subtreeAns[child] + subtreeSize[child]), totalNodes);
+            solve(child, src, ans[src] - 
+                (subtreeAns[child] + subtreeSize[child]), totalNodes);
     }
 }
  

@@ -1,0 +1,136 @@
+CSES
+
+1) Josephus problem :
+    fun(int n,k)
+    {
+        if(n==1){
+            return 0;
+        }
+        int x = fun(n-1,k)
+        int y = (x+k)%n;
+        return y;
+    }
+2) binary exponentiation : it takes
+an log(n) time to compute and don't forget the 
+modulo each time
+
+3) exponent towers: 
+    this uses fermat's theorem which states that 
+    if p is any prime number number then 
+    p divides a^p - a where a can be any number 
+
+    this implies that:
+    a^p = a modp
+
+    if a is not divisible by p
+    then,
+    a^(p-1) = 1 modp
+
+
+4) Counting the total divisors of a number 
+Solution 1
+The following function count returns the number of divisors for x. It checks
+every integer k between 1 and \sqrt x. If x is divisible by k, we have
+found one divisor. In addition, if k \neq x/k, we have found another divisor
+x/k.
+The solution works in O(n \sqrt N) time where N is the upper bound for x.
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int count(int x) {
+    int c = 0;
+    for (int k = 1; k * k <= x; k++) {
+        if (x % k) continue;
+        c++;
+        if (k != x / k) c++;
+    }
+    return c;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        cout << count(x) << "\n";
+    }
+}Solution 2
+This solution works in a similar manner to the sieve of Eratosthenes. It
+creates a vector count that will contain the number of divisors for each
+number x between 1 and N.
+Creating the vector takes O(N \log N) time because the total number of steps
+is bounded by the harmonic sum
+$$
+N + N/2 + N/3 + \dots = O(N \log N).
+$$
+Thus, the solution works in O(N \log N + n) time.
+
+#include <iostream>
+#include <vector>
+using namespace std;
+const int N = 1000000;
+
+int main() {
+    vector<int> count(N + 1);
+    for (int i = 1; i <= N; i++) {
+        for (int j = i; j <= N; j += i) {
+            count[j]++;
+        }
+    }
+
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        cout << count[x] << "\n";
+    }
+}
+
+
+5)
+ Common divisor:
+    here it was asked to find the largest gcd of two numbers from the list. 
+The time complexity of finding GCD of two integers a and b using the Euclidean algorithm is:
+log(min(a,b))
+
+the brute force was of complexity: n^2 * log(min(arr))
+the optimal approach:
+    a) answer will be from 1 to max element present\
+    b) we can maintain an array and check which greatest elements divides the array 
+    most biggest nuimber
+    c) the most imp: we precompute the array but the by taking the step size of the element itself in the 
+    inside loop , so we can chedck the complexity 
+    n * log(mx)
+
+
+6) Prime multiples :
+    Imagine you are doing the same sieve but the prime numbers are less
+    , like they are 20 and n=1e18 then this means that nlog(k) complexity will not 
+    work, 
+
+    Remeber that complexity of sieve of eronthesis is 
+    nlog(log(n))
+
+    SO what we do is use inclusion and exclusion prinicple , and generatre all the 
+    possible cases using the bitmasks , and then using the count of the 
+    number of bits set we will identify if they are selecting odd number of 
+    eleemnts or even number of elements , if it is even then minus and
+    else subtract.
+
+    and in this way we will find the answer
+
+
+8) Next prime:
+
+    distance between any two prime numbers are log(n) and total number of 
+    prime number till n is n/log(n)
+
+    milley robin is an algorithm that helps us to check if a numnber is prime or 
+    not quickly using primility test it works on the large number,.
+
+9) apple distribution :
+ here basically we are finding the ncr and for the , (r! ) and (n-r)! part
+ we will find it and then (r!)^p-2 and (n=r)!^(p-2)
